@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = "postgres://947dc4921604baafdef332da223ede63ddd3ec1f4d7aea104f14e6dabf7172cb:sk_P3L0Jc2rWYKdQIA220nuY@db.prisma.io:5432/postgres?sslmode=require"
 }
 
 // ==========================================
