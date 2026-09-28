@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma"
 
 export async function POST(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -16,7 +16,8 @@ export async function POST(
     const formData = await req.formData()
     const action = formData.get("action") as string // APPROVE, REJECT, COMPLETE
 
-    const borrowingId = params.id
+    const resolvedParams = await params
+    const borrowingId = resolvedParams.id
     const borrowing = await prisma.borrowing.findUnique({
       where: { id: borrowingId },
       include: { asset: true, user: true }
@@ -79,8 +80,7 @@ export async function POST(
         await tx.borrowing.update({
           where: { id: borrowingId },
           data: { 
-            status: 'SELESAI',
-            actualReturnDate: new Date()
+            status: 'SELESAI'
           }
         })
         // Kembalikan status aset jadi tersedia

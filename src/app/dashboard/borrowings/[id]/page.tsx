@@ -135,18 +135,9 @@ export default async function BorrowingDetailPage({ params }: { params: Promise<
               <div>
                 <p className="text-sm text-slate-500">Rencana Pengembalian</p>
                 <p className="font-semibold text-slate-900 flex items-center gap-2">
-                  <Calendar className="w-4 h-4 text-slate-400" /> {borrowing.returnDate ? new Date(borrowing.returnDate).toLocaleDateString('id-ID') : '-'}
+                  <Calendar className="w-4 h-4 text-slate-400" /> {borrowing.estReturnDate ? new Date(borrowing.estReturnDate).toLocaleDateString('id-ID') : '-'}
                 </p>
               </div>
-
-              {borrowing.actualReturnDate && (
-                <div>
-                  <p className="text-sm text-slate-500">Dikembalikan Pada</p>
-                  <p className="font-semibold text-emerald-700 flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-500" /> {new Date(borrowing.actualReturnDate).toLocaleDateString('id-ID')}
-                  </p>
-                </div>
-              )}
             </div>
 
             {/* Admin Actions */}

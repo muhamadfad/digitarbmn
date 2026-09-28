@@ -81,7 +81,7 @@ export default function DashboardCharts() {
               </Pie>
               <Tooltip 
                 contentStyle={{ borderRadius: '4px', border: '1px solid #e2e8f0', fontSize: '12px', fontWeight: 'bold' }}
-                formatter={(value: number) => [`${value}%`, 'Kondisi']}
+                formatter={(value: any) => [`${value}%`, 'Kondisi']}
               />
               <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: '12px', fontWeight: 'bold', color: '#475569' }}/>
             </PieChart>

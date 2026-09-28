@@ -19,7 +19,7 @@ export default async function SensusPage({
 
   const whereClause: any = {}
   if (q) {
-    whereClause.title = { contains: q }
+    whereClause.period = { contains: q }
   }
   if (status) {
     whereClause.status = status
@@ -162,7 +162,7 @@ export default async function SensusPage({
                   return (
                     <tr key={sensus.id} className={`hover:bg-slate-50/80 transition-colors ${detailId === sensus.id ? 'bg-indigo-50/50' : ''}`}>
                       <td className="px-4 py-3">
-                        <div className="font-semibold text-slate-800 text-xs">{sensus.title}</div>
+                        <div className="font-semibold text-slate-800 text-xs">Sensus {sensus.period} {sensus.year}</div>
                         <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-1 max-w-[200px]">{sensus.notes || '-'}</div>
                       </td>
                       <td className="px-4 py-3 text-xs text-slate-600">
@@ -212,7 +212,7 @@ export default async function SensusPage({
               Mulai: {new Date(detailSensus.startDate).toLocaleDateString('id-ID')}
             </div>
             
-            <h2 className="font-black text-slate-900 uppercase text-xl leading-tight mb-6">{detailSensus.title}</h2>
+            <h2 className="font-black text-slate-900 uppercase text-xl leading-tight mb-6">Sensus {detailSensus.period} {detailSensus.year}</h2>
             
             <div className="space-y-6">
               <div className="bg-slate-50/50 p-3.5 rounded-md border border-slate-100">

@@ -35,7 +35,6 @@ export default function QRPage() {
                 onScan={handleScan}
                 onError={(err) => console.log(err)}
                 components={{
-                  audio: false,
                   finder: false, // Turn off built in finder to use our own styles
                 }}
               />

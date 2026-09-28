@@ -8,7 +8,11 @@ export default async function CreateAssetPage() {
   const types = await prisma.assetType.findMany()
   const locations = await prisma.location.findMany({ include: { rooms: true } })
   const units = await prisma.unit.findMany()
-  const users = await prisma.user.findMany({ where: { isActive: true }, orderBy: { name: 'asc' } })
+  const users = await prisma.user.findMany({ 
+    where: { isActive: true }, 
+    include: { role: true },
+    orderBy: { name: 'asc' } 
+  })
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">

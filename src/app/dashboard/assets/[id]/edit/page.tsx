@@ -14,7 +14,11 @@ export default async function EditAssetPage({ params }: { params: Promise<{ id: 
 
   const categories = await prisma.category.findMany()
   const locations = await prisma.location.findMany({ include: { rooms: true } })
-  const users = await prisma.user.findMany({ where: { isActive: true }, orderBy: { name: 'asc' } })
+  const users = await prisma.user.findMany({ 
+    where: { isActive: true }, 
+    include: { role: true },
+    orderBy: { name: 'asc' } 
+  })
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">

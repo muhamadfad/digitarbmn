@@ -66,7 +66,6 @@ export default function ScannerPage() {
               onScan={(result) => handleDecode(result[0].rawValue)}
               onError={(error) => console.log(error?.message)}
               components={{
-                audio: false,
                 finder: true,
               }}
               styles={{

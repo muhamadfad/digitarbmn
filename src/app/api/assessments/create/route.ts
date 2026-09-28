@@ -34,6 +34,7 @@ export async function POST(request: Request) {
           estCost: residualValue,
           result: condition,
           notes: formData.get("notes") as string,
+          recommendation: formData.get("recommendation") as string || "Tidak ada rekomendasi khusus",
         }
       })
 

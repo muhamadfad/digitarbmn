@@ -59,7 +59,7 @@ export async function POST(request: Request) {
           data: {
             userId: admin.id,
             title: "Pengajuan Peminjaman Baru",
-            message: `${user.name} mengajukan peminjaman BMN baru.`,
+            message: `${session.user.name} mengajukan peminjaman BMN baru.`,
             link: `/dashboard/borrowings/${b.id}`
           }
         })
