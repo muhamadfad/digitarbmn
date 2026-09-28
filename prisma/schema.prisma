@@ -1,0 +1,402 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// MASTER DATA
+// ==========================================
+model Unit {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  users  User[]
+  assets Asset[]
+
+  @@map("units")
+}
+
+model Role {
+  id        String   @id @default(cuid())
+  name      String   @unique // ADMIN, PENGELOLA_BMN, PENANGGUNG_JAWAB_RUANGAN, PENGGUNA_BMN, PIMPINAN
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  users User[]
+
+  @@map("roles")
+}
+
+model Location {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  rooms  Room[]
+  assets Asset[]
+
+  @@map("locations")
+}
+
+model Room {
+  id         String   @id @default(cuid())
+  locationId String   @map("location_id")
+  name       String
+  code       String   @unique
+  picId      String?  @map("pic_id") // Penanggung Jawab Ruangan
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  location Location @relation(fields: [locationId], references: [id])
+  assets   Asset[]
+
+  @@map("rooms")
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String
+  code      String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  assetTypes AssetType[]
+  assets     Asset[]
+
+  @@map("categories")
+}
+
+model AssetType {
+  id         String   @id @default(cuid())
+  categoryId String   @map("category_id")
+  name       String
+  code       String   @unique
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  category Category @relation(fields: [categoryId], references: [id])
+  assets   Asset[]
+
+  @@map("asset_types")
+}
+
+// ==========================================
+// USERS
+// ==========================================
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  username  String   @unique
+  password  String
+  roleId    String   @map("role_id")
+  unitId    String?  @map("unit_id")
+  isActive  Boolean  @default(true) @map("is_active")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  role Role  @relation(fields: [roleId], references: [id])
+  unit Unit? @relation(fields: [unitId], references: [id])
+
+  heldAssets       Asset[]        @relation("AssetHolder")
+  assetHistories   AssetHistory[]
+  borrowings       Borrowing[]    @relation("BorrowingUser")
+  handoverGiver    Handover[]     @relation("HandoverGiver")
+  handoverReceiver Handover[]     @relation("HandoverReceiver")
+  complaints       Complaint[]
+  auditLogs        AuditLog[]
+  notifications    Notification[] @relation("UserNotifications")
+  SensusRecord     SensusRecord[]
+
+  @@map("users")
+}
+
+// ==========================================
+// ASSETS
+// ==========================================
+model Asset {
+  id               String    @id @default(cuid())
+  assetCode        String    @unique @map("kode_asset")
+  nup              String    @map("nup")
+  name             String    @map("nama_asset")
+  categoryId       String    @map("kategori_id")
+  assetTypeId      String    @map("jenis_asset_id")
+  brand            String?   @map("merk")
+  type             String?   @map("tipe")
+  serialNumber     String?   @map("nomor_seri")
+  acquisitionYear  Int?      @map("tahun_perolehan")
+  acquisitionDate  DateTime? @map("tanggal_perolehan")
+  acquisitionValue Float?    @map("nilai_perolehan")
+  locationId       String?   @map("lokasi_id")
+  roomId           String?   @map("ruangan_id")
+  unitId           String?   @map("unit_id")
+  userId           String?   @map("user_id") // Pemegang / Penanggung Jawab saat ini
+
+  // Kondisi: BAIK, RUSAK_RINGAN, RUSAK_BERAT
+  condition String @default("BAIK") @map("kondisi")
+  // Status: TERSEDIA, DIPINJAM, DIGUNAKAN, DALAM_PEMELIHARAAN, TIDAK_TERSEDIA
+  status    String @default("TERSEDIA") @map("status_penggunaan")
+
+  qrCode    String?  @unique @map("qr_code")
+  notes     String?  @map("keterangan")
+  photo     String?  @map("foto")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  category  Category  @relation(fields: [categoryId], references: [id])
+  assetType AssetType @relation(fields: [assetTypeId], references: [id])
+  location  Location? @relation(fields: [locationId], references: [id])
+  room      Room?     @relation(fields: [roomId], references: [id])
+  unit      Unit?     @relation(fields: [unitId], references: [id])
+  user      User?     @relation("AssetHolder", fields: [userId], references: [id])
+
+  histories    AssetHistory[]
+  assessments  Assessment[]
+  borrowings   Borrowing[]
+  complaints   Complaint[]
+  maintenances Maintenance[]
+  rkbmnItems   RkbmnItem[]
+  auditLogs    AuditLog[]
+  SensusRecord SensusRecord[]
+
+  @@unique([assetCode, nup])
+  @@map("assets")
+}
+
+// ==========================================
+// ASSET HISTORY
+// ==========================================
+model AssetHistory {
+  id            String   @id @default(cuid())
+  assetId       String   @map("asset_id")
+  eventType     String   @map("event_type") // ASSET_CREATED, ASSESSMENT, BORROW_REQUEST...
+  title         String
+  description   String?
+  actorId       String?  @map("actor_id")
+  referenceType String?  @map("reference_type")
+  referenceId   String?  @map("reference_id")
+  metadata      String? // JSON string
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  asset Asset @relation(fields: [assetId], references: [id])
+  actor User? @relation(fields: [actorId], references: [id])
+
+  @@map("asset_histories")
+}
+
+// ==========================================
+// TRANSACTIONS
+// ==========================================
+model Borrowing {
+  id            String   @id @default(cuid())
+  assetId       String   @map("asset_id")
+  userId        String   @map("user_id") // Pemohon
+  purpose       String   @map("keperluan")
+  locationUse   String?  @map("lokasi_penggunaan")
+  borrowDate    DateTime @map("tanggal_pinjam")
+  estReturnDate DateTime @map("estimasi_kembali")
+
+  // Status: DRAFT, MENUNGGU_PERSETUJUAN, DISETUJUI, DITOLAK, DIPINJAM, SELESAI, DIBATALKAN
+  status String @default("DRAFT")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  asset    Asset     @relation(fields: [assetId], references: [id])
+  user     User      @relation("BorrowingUser", fields: [userId], references: [id])
+  handover Handover?
+
+  @@map("borrowings")
+}
+
+model Handover {
+  id           String   @id @default(cuid())
+  borrowingId  String   @unique @map("borrowing_id")
+  giverId      String   @map("pemberi_id")
+  receiverId   String   @map("penerima_id")
+  initialCond  String   @map("kondisi_awal")
+  notes        String?  @map("catatan")
+  handoverDate DateTime @default(now()) @map("waktu_serah_terima")
+  proof        String?  @map("bukti")
+
+  borrowing Borrowing @relation(fields: [borrowingId], references: [id])
+  giver     User      @relation("HandoverGiver", fields: [giverId], references: [id])
+  receiver  User      @relation("HandoverReceiver", fields: [receiverId], references: [id])
+
+  @@map("handovers")
+}
+
+model Assessment {
+  id             String   @id @default(cuid())
+  assetId        String   @map("asset_id")
+  assessorId     String   @map("assessor_id")
+  assessmentDate DateTime @default(now()) @map("tanggal_assessment")
+  physicalCond   String   @map("kondisi_fisik")
+  functionality  String   @map("fungsi_aset")
+  feasibility    String   @map("kelayakan")
+  damageLevel    String   @map("tingkat_kerusakan")
+  notes          String?  @map("catatan")
+  photo          String?  @map("foto")
+  recommendation String   @map("rekomendasi")
+  estCost        Float?   @map("estimasi_biaya")
+  result         String   @map("hasil_assessment")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  asset Asset @relation(fields: [assetId], references: [id])
+
+  @@map("assessments")
+}
+
+model Complaint {
+  id           String   @id @default(cuid())
+  assetId      String   @map("asset_id")
+  reporterId   String   @map("reporter_id")
+  damageType   String   @map("jenis_kerusakan")
+  description  String   @map("deskripsi")
+  photo        String?  @map("foto")
+  incidentDate DateTime @map("waktu_kejadian")
+  priority     String   @default("LOW") // LOW, MEDIUM, HIGH, CRITICAL
+  status       String   @default("OPEN") // OPEN, VERIFIED, REJECTED, IN_PROGRESS, RESOLVED, CLOSED
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  asset        Asset         @relation(fields: [assetId], references: [id])
+  reporter     User          @relation(fields: [reporterId], references: [id])
+  maintenances Maintenance[]
+
+  @@map("complaints")
+}
+
+model Maintenance {
+  id             String    @id @default(cuid())
+  assetId        String    @map("asset_id")
+  complaintId    String?   @map("complaint_id")
+  type           String    @map("maintenance_type") // KURATIF, PREVENTIF
+  workOrder      String?   @map("work_order")
+  technician     String?   @map("technician")
+  date           DateTime  @map("tanggal")
+  description    String    @map("deskripsi")
+  action         String?   @map("tindakan")
+  cost           Float?    @map("biaya")
+  sparepart      String?   @map("sparepart")
+  condBefore     String?   @map("kondisi_sebelum")
+  condAfter      String?   @map("kondisi_sesudah")
+  photo          String?   @map("foto")
+  status         String    @map("status") // OPEN, IN_PROGRESS, COMPLETED
+  completionDate DateTime? @map("tanggal_selesai")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  asset     Asset      @relation(fields: [assetId], references: [id])
+  complaint Complaint? @relation(fields: [complaintId], references: [id])
+
+  @@map("maintenances")
+}
+
+// ==========================================
+// RKBMN (Rencana Kebutuhan BMN)
+// ==========================================
+model Rkbmn {
+  id            String   @id @default(cuid())
+  targetYear    Int      @map("tahun_anggaran")
+  type          String   @map("jenis_usulan") // PENGHAPUSAN, PENGADAAN, PEMELIHARAAN
+  justification String   @map("justifikasi")
+  status        String   @default("DRAFT") // DRAFT, DIAJUKAN, DISETUJUI, DITOLAK
+  totalEstCost  Float?   @map("total_estimasi_biaya")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  items RkbmnItem[]
+
+  @@map("rkbmns")
+}
+
+model RkbmnItem {
+  id        String   @id @default(cuid())
+  rkbmnId   String   @map("rkbmn_id")
+  assetId   String?  @map("asset_id") // For Penghapusan/Pemeliharaan
+  itemName  String?  @map("nama_barang") // For Pengadaan
+  quantity  Int      @default(1) @map("jumlah")
+  estPrice  Float?   @map("estimasi_harga")
+  notes     String?  @map("catatan")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  rkbmn Rkbmn  @relation(fields: [rkbmnId], references: [id], onDelete: Cascade)
+  asset Asset? @relation(fields: [assetId], references: [id])
+
+  @@map("rkbmn_items")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  assetId   String   @map("asset_id")
+  userId    String   @map("user_id")
+  action    String
+  details   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  asset Asset @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  title     String
+  message   String
+  isRead    Boolean  @default(false) @map("is_read")
+  link      String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+// ==========================================
+// SENSUS BMN (STOCK OPNAME)
+// ==========================================
+model Sensus {
+  id        String    @id @default(cuid())
+  year      Int       @map("tahun")
+  period    String    @map("periode") // e.g., 'Semester 1', 'Tahunan'
+  status    String    @default("AKTIF") // AKTIF, SELESAI
+  notes     String?   @map("catatan")
+  startDate DateTime  @default(now()) @map("tanggal_mulai")
+  endDate   DateTime? @map("tanggal_selesai")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  records SensusRecord[]
+
+  @@unique([year, period])
+  @@map("sensus")
+}
+
+model SensusRecord {
+  id        String   @id @default(cuid())
+  sensusId  String   @map("sensus_id")
+  assetId   String   @map("asset_id")
+  status    String   @map("status_keberadaan") // DITEMUKAN, TIDAK_DITEMUKAN, RUSAK
+  notes     String?  @map("catatan")
+  scannedAt DateTime @default(now()) @map("waktu_scan")
+  scannedBy String   @map("petugas_id") // User ID
+
+  sensus Sensus @relation(fields: [sensusId], references: [id], onDelete: Cascade)
+  asset  Asset  @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [scannedBy], references: [id])
+
+  @@unique([sensusId, assetId])
+  @@map("sensus_records")
+}
