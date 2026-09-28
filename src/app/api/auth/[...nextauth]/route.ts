@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma"
 import bcrypt from "bcryptjs"
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET || "digitar-bmn-super-secret-key-2026-production",
   providers: [
     CredentialsProvider({
       name: "Credentials",
