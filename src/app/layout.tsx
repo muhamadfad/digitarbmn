@@ -21,6 +21,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.deferredPWAInstallPrompt = null;
+          window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            window.deferredPWAInstallPrompt = e;
+            window.dispatchEvent(new Event('pwa-ready'));
+          });
+        `}} />
+      </head>
       <body className={`${jakarta.variable} font-sans antialiased`}>
         <AuthProvider>
           {children}

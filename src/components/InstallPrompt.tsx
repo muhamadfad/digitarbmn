@@ -13,21 +13,20 @@ export default function InstallPrompt() {
       navigator.serviceWorker.register('/sw.js').catch(console.error);
     }
 
-    const handler = (e: any) => {
-      // Mencegah prompt bawaan browser muncul secara otomatis
-      e.preventDefault();
-      // Menyimpan event agar bisa dipanggil nanti lewat tombol kita
-      setDeferredPrompt(e);
-      
-      // Tampilkan popup custom kita
-      // Cek apakah user sudah pernah menutupnya sebelumnya
+    const checkPrompt = () => {
       const hasDismissed = localStorage.getItem("pwa-prompt-dismissed");
-      if (!hasDismissed) {
+      // Cek apakah prompt sudah disimpan di variabel global oleh script di head
+      if ((window as any).deferredPWAInstallPrompt && !hasDismissed) {
+        setDeferredPrompt((window as any).deferredPWAInstallPrompt);
         setShowPrompt(true);
       }
     };
 
-    window.addEventListener("beforeinstallprompt", handler);
+    // Cek saat pertama kali load
+    checkPrompt();
+
+    // Dengarkan event kustom pwa-ready jika event beforeinstallprompt fired setelah komponen dimount
+    window.addEventListener("pwa-ready", checkPrompt);
 
     // Deteksi jika aplikasi sudah diinstal
     window.addEventListener("appinstalled", () => {
@@ -36,7 +35,7 @@ export default function InstallPrompt() {
     });
 
     return () => {
-      window.removeEventListener("beforeinstallprompt", handler);
+      window.removeEventListener("pwa-ready", checkPrompt);
     };
   }, []);
 
