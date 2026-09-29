@@ -146,8 +146,14 @@ export default function Header({
           </button>
 
           {showDropdown && (
-            <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-slate-200 rounded-sm shadow-lg overflow-hidden z-50 flex flex-col max-h-[80vh]">
-              <div className="flex items-center justify-between px-4 py-3 border-b bg-slate-50">
+            <>
+              {/* Overlay untuk menutup dropdown jika diklik di luar pada mobile */}
+              <div 
+                className="fixed inset-0 z-40 sm:hidden" 
+                onClick={() => setShowDropdown(false)}
+              ></div>
+              <div className="fixed top-14 right-4 left-4 sm:left-auto sm:absolute sm:right-0 sm:mt-2 sm:w-96 bg-white border border-slate-200 rounded-sm shadow-lg overflow-hidden z-50 flex flex-col max-h-[80vh]">
+                <div className="flex items-center justify-between px-4 py-3 border-b bg-slate-50">
                 <h3 className="font-semibold text-slate-800">Notifikasi</h3>
                 {unreadCount > 0 && (
                   <button onClick={markAllAsRead} className="text-xs text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
