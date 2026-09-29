@@ -1,4 +1,5 @@
 import DashboardLayoutWrapper from "@/components/layout/DashboardLayoutWrapper"
+import InstallPrompt from "@/components/InstallPrompt"
 
 export default function DashboardLayout({
   children,
@@ -8,6 +9,7 @@ export default function DashboardLayout({
   return (
     <DashboardLayoutWrapper>
       {children}
+      <InstallPrompt />
     </DashboardLayoutWrapper>
   )
 }
