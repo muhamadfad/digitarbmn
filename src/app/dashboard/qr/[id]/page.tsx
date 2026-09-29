@@ -31,10 +31,10 @@ export default async function GenerateQRPage({ params }: { params: Promise<{ id:
         </div>
       </div>
 
-      <div className="bg-card border rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-card border rounded-xl shadow-md overflow-hidden">
         {/* The Label to Print */}
         <div className="p-12 flex items-center justify-center bg-secondary/30">
-          <div className="bg-white p-6 border-2 border-dashed border-gray-300 rounded-xl shadow-sm text-center w-[350px]">
+          <div className="bg-white p-6 border-2 border-dashed border-gray-300 rounded-xl shadow-md text-center w-[350px]">
             <h2 className="text-lg font-bold text-gray-900 mb-1 border-b pb-2">BPS Prov. Sultra</h2>
             <div className="my-4 flex justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}

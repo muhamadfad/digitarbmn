@@ -21,7 +21,7 @@ export default async function PrintQRPage() {
   return (
     <div id="print-area" className="bg-white min-h-screen print:p-0 p-8">
       {/* Tombol cetak yang hanya muncul di layar, hilang saat diprint */}
-      <div className="max-w-4xl mx-auto mb-8 print:hidden flex justify-between items-center bg-slate-50 p-4 border border-slate-200 rounded-sm">
+      <div className="max-w-4xl mx-auto mb-8 print:hidden flex justify-between items-center bg-slate-50 p-4 border border-slate-200 rounded-md">
         <div>
           <h1 className="font-bold text-slate-800">Cetak Label BMN</h1>
           <p className="text-sm text-slate-500">Gunakan kertas A4 Stiker. Tekan tombol cetak di bawah ini.</p>

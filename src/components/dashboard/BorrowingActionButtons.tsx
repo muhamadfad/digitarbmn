@@ -46,7 +46,7 @@ export default function BorrowingActionButtons({ borrowingId, status, userRole }
       <button 
         onClick={handleApprove}
         disabled={isPendingApprove || isPendingReject}
-        className="p-1 text-emerald-600 hover:bg-emerald-50 hover:text-emerald-700 rounded-sm transition-colors disabled:opacity-50"
+        className="p-1 text-emerald-600 hover:bg-emerald-50 hover:text-emerald-700 rounded-md transition-colors disabled:opacity-50"
         title="Setujui"
       >
         {isPendingApprove ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
@@ -54,7 +54,7 @@ export default function BorrowingActionButtons({ borrowingId, status, userRole }
       <button 
         onClick={handleReject}
         disabled={isPendingApprove || isPendingReject}
-        className="p-1 text-rose-600 hover:bg-rose-50 hover:text-rose-700 rounded-sm transition-colors disabled:opacity-50"
+        className="p-1 text-rose-600 hover:bg-rose-50 hover:text-rose-700 rounded-md transition-colors disabled:opacity-50"
         title="Tolak"
       >
         {isPendingReject ? <Loader2 className="w-4 h-4 animate-spin" /> : <X className="w-4 h-4" />}

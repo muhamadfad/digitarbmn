@@ -85,7 +85,7 @@ export default async function AssetsPage({
   return (
     <div className="flex flex-col lg:flex-row gap-4 h-full items-start">
       {/* Kolom Tabel Utama */}
-      <div className={`flex-1 flex flex-col bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 w-full ${detailAsset ? 'hidden lg:flex' : 'flex'}`}>
+      <div className={`flex-1 flex flex-col bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 w-full ${detailAsset ? 'hidden lg:flex' : 'flex'}`}>
         {/* Header Halaman (Mirip FASIH) */}
       <div className="p-4 sm:p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -95,10 +95,10 @@ export default async function AssetsPage({
         <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
           <ExportExcelButton data={assets} />
           <ExportPDFButton assets={assets} />
-          <Link href="/dashboard/qr/print" className="flex items-center justify-center rounded-sm bg-white border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm" title="Cetak Label QR (A4)">
+          <Link href="/dashboard/qr/print" className="flex items-center justify-center rounded-md bg-white border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-md" title="Cetak Label QR (A4)">
             <QrCode className="mr-2 h-4 w-4 text-slate-500" /> Cetak QR
           </Link>
-          <Link href="/dashboard/assets/create" className="flex items-center justify-center rounded-sm bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors shadow-sm">
+          <Link href="/dashboard/assets/create" className="flex items-center justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-primary/90 transition-colors shadow-md">
             <Plus className="mr-1.5 h-4 w-4" /> Tambah BMN
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default async function AssetsPage({
           <div className="flex flex-wrap items-center gap-2">
             
             {/* Filter Kategori Aktual */}
-            <div className="relative border border-slate-300 bg-white rounded-sm hover:bg-slate-50 shadow-sm flex items-center">
+            <div className="relative border border-slate-300 bg-white rounded-md hover:bg-slate-50 shadow-md flex items-center">
                <List className="w-4 h-4 text-slate-500 absolute left-3 pointer-events-none" />
                <select 
                  name="categoryId" 
@@ -129,15 +129,15 @@ export default async function AssetsPage({
                <ArrowUpDown className="w-3 h-3 text-slate-400 absolute right-3 pointer-events-none" />
             </div>
 
-            <div className="flex items-center bg-slate-50 border border-slate-200 rounded-sm px-1 py-1 shadow-sm">
-              <span className="bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-sm">{assets.length}</span>
+            <div className="flex items-center bg-slate-50 border border-slate-200 rounded-md px-1 py-1 shadow-md">
+              <span className="bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded-md">{assets.length}</span>
               <span className="text-xs font-semibold text-slate-600 px-2 uppercase">Data Tersaring</span>
             </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
             {/* Filter Status Aktual */}
-            <div className="relative border border-slate-300 bg-white rounded-sm hover:bg-slate-50 shadow-sm flex items-center hidden sm:flex">
+            <div className="relative border border-slate-300 bg-white rounded-md hover:bg-slate-50 shadow-md flex items-center hidden sm:flex">
                <span className="text-sm text-slate-500 absolute left-3 pointer-events-none">Status:</span>
                <select 
                  name="status" 
@@ -154,7 +154,7 @@ export default async function AssetsPage({
             </div>
             
             {/* Filter Kondisi Aktual */}
-            <div className="relative border border-slate-300 bg-white rounded-sm hover:bg-slate-50 shadow-sm flex items-center hidden lg:flex">
+            <div className="relative border border-slate-300 bg-white rounded-md hover:bg-slate-50 shadow-md flex items-center hidden lg:flex">
                <span className="text-sm text-slate-500 absolute left-3 pointer-events-none">Kondisi:</span>
                <select 
                  name="condition" 
@@ -171,7 +171,7 @@ export default async function AssetsPage({
           </div>
         </div>
 
-        <div className="flex justify-between items-center bg-white border border-slate-200 rounded-sm p-1.5 shadow-sm">
+        <div className="flex justify-between items-center bg-white border border-slate-200 rounded-md p-1.5 shadow-md">
           <div className="relative w-full max-w-md flex-1">
             <Search className="absolute left-2.5 top-2 h-4 w-4 text-slate-400" />
             <input 
@@ -183,16 +183,16 @@ export default async function AssetsPage({
             />
           </div>
           <div className="flex items-center gap-1 border-l border-slate-200 pl-2 ml-1">
-            <button type="submit" className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-white bg-blue-600 hover:bg-blue-700 rounded-sm font-medium shadow-sm transition-colors">
+            <button type="submit" className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-white bg-primary hover:bg-primary/90 rounded-md font-medium shadow-md transition-colors">
               <Search className="w-4 h-4" /> <span className="hidden sm:inline">Cari</span>
             </button>
             <div className="h-4 w-px bg-slate-300 mx-1"></div>
-            <Link href={`/dashboard/assets${resolvedParams.view === 'grid' ? '?view=grid' : ''}`} className="p-1.5 text-slate-500 hover:bg-slate-100 rounded-sm" title="Reset Semua Filter"><RefreshCw className="w-4 h-4" /></Link>
+            <Link href={`/dashboard/assets${resolvedParams.view === 'grid' ? '?view=grid' : ''}`} className="p-1.5 text-slate-500 hover:bg-slate-100 rounded-md" title="Reset Semua Filter"><RefreshCw className="w-4 h-4" /></Link>
             
             {/* Tombol Grid View (Link agar tidak bentrok dengan form submit) */}
             <Link 
               href={buildUrl('grid')}
-              className={`inline-block p-1.5 rounded-sm shadow-sm transition-colors ${currentView === 'grid' ? 'text-white bg-amber-500' : 'text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
+              className={`inline-block p-1.5 rounded-md shadow-md transition-colors ${currentView === 'grid' ? 'text-white bg-amber-500' : 'text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
               title="Tampilan Grid"
             >
               <LayoutGrid className="w-4 h-4" />
@@ -201,14 +201,14 @@ export default async function AssetsPage({
             {/* Tombol List View (Link) */}
             <Link 
               href={buildUrl('list')}
-              className={`inline-block p-1.5 rounded-sm shadow-sm transition-colors ${currentView === 'list' ? 'text-white bg-amber-500' : 'text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
+              className={`inline-block p-1.5 rounded-md shadow-md transition-colors ${currentView === 'list' ? 'text-white bg-amber-500' : 'text-slate-500 hover:bg-slate-100 border border-slate-200'}`}
               title="Tampilan Tabel"
             >
               <List className="w-4 h-4" />
             </Link>
             
             {/* Tombol Filter */}
-            <label htmlFor="toggle-filter" className="relative p-1.5 text-slate-500 hover:bg-slate-100 rounded-sm cursor-pointer ml-1 border border-slate-200 shadow-sm" title="Tampilkan/Sembunyikan Filter">
+            <label htmlFor="toggle-filter" className="relative p-1.5 text-slate-500 hover:bg-slate-100 rounded-md cursor-pointer ml-1 border border-slate-200 shadow-md" title="Tampilkan/Sembunyikan Filter">
               <Filter className="w-4 h-4" />
               {activeFiltersCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-[9px] font-bold h-3.5 w-3.5 flex items-center justify-center rounded-full border border-white">
@@ -225,7 +225,7 @@ export default async function AssetsPage({
         <div className="p-4 bg-slate-50 border-t border-slate-200">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {assets.map((asset) => (
-              <div key={asset.id} className="bg-white border border-slate-200 rounded-sm p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col relative group">
+              <div key={asset.id} className="bg-white border border-slate-200 rounded-md p-4 shadow-md hover:shadow-md transition-shadow flex flex-col relative group">
                 <div className="flex justify-between items-start mb-2">
                   <div className="font-mono text-xs font-semibold text-slate-800 border-b border-dashed border-slate-400 pb-0.5">{asset.nup} - {asset.assetCode}</div>
                   <Link href={buildUrl(currentView, asset.id)} className="text-slate-400 hover:text-slate-800">
@@ -238,13 +238,13 @@ export default async function AssetsPage({
                 <div className="mt-auto pt-3 border-t border-slate-100 flex flex-col gap-2">
                   <div className="text-xs text-slate-600 flex items-center gap-1.5"><LayoutGrid className="w-3.5 h-3.5 text-slate-400" /> {asset.room ? asset.room.name : '-'}</div>
                   <div className="flex justify-between items-center mt-1">
-                    <span className={`px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
+                    <span className={`px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
                       asset.condition === 'BAIK' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-rose-50 text-rose-700 border-rose-200'
                     }`}>
                       {asset.condition.replace('_', ' ')}
                     </span>
-                    <span className={`px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
-                      asset.status === 'TERSEDIA' ? 'bg-slate-50 text-slate-600 border-slate-200' : 'bg-blue-50 text-blue-700 border-blue-200'
+                    <span className={`px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
+                      asset.status === 'TERSEDIA' ? 'bg-slate-50 text-slate-600 border-slate-200' : 'bg-primary/5 text-primary border-blue-200'
                     }`}>
                       {asset.status.replace('_', ' ')}
                     </span>
@@ -264,7 +264,7 @@ export default async function AssetsPage({
           <table className="w-full text-left text-sm text-slate-700">
             <thead className="border-y border-slate-200 bg-white text-slate-600 font-medium text-xs">
               <tr>
-                <th className="px-4 py-2.5 w-10 text-center"><input type="checkbox" className="rounded-sm border-slate-300 accent-amber-500" /></th>
+                <th className="px-4 py-2.5 w-10 text-center"><input type="checkbox" className="rounded-md border-slate-300 accent-amber-500" /></th>
                 <th className="px-4 py-2.5 whitespace-nowrap cursor-pointer hover:bg-slate-50">Kode Identitas <ArrowUpDown className="inline w-3 h-3 ml-1 text-slate-400" /></th>
                 <th className="px-4 py-2.5 cursor-pointer hover:bg-slate-50">Nama Aset / Kategori <Filter className="inline w-3 h-3 ml-1 text-slate-400" /></th>
                 <th className="px-4 py-2.5 cursor-pointer hover:bg-slate-50">Alamat / Lokasi <Filter className="inline w-3 h-3 ml-1 text-slate-400" /></th>
@@ -275,7 +275,7 @@ export default async function AssetsPage({
             <tbody className="divide-y divide-slate-100">
               {assets.map((asset) => (
                 <tr key={asset.id} className="hover:bg-slate-50/80 transition-colors group">
-                  <td className="px-4 py-3 text-center"><input type="checkbox" className="rounded-sm border-slate-300 accent-amber-500" /></td>
+                  <td className="px-4 py-3 text-center"><input type="checkbox" className="rounded-md border-slate-300 accent-amber-500" /></td>
                   <td className="px-4 py-3 font-mono text-xs">
                     <span className="font-semibold text-slate-800 border-b border-dashed border-slate-400 pb-0.5">{asset.nup} - {asset.assetCode}</span>
                     <button className="ml-2 text-slate-400 hover:text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity"><Copy className="w-3.5 h-3.5" /></button>
@@ -290,20 +290,20 @@ export default async function AssetsPage({
                   </td>
                   <td className="px-4 py-3 text-center">
                     <div className="flex flex-col gap-1 items-center">
-                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
+                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
                         asset.condition === 'BAIK' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-rose-50 text-rose-700 border-rose-200'
                       }`}>
                         {asset.condition.replace('_', ' ')}
                       </span>
-                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
-                        asset.status === 'TERSEDIA' ? 'bg-slate-50 text-slate-600 border-slate-200' : 'bg-blue-50 text-blue-700 border-blue-200'
+                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
+                        asset.status === 'TERSEDIA' ? 'bg-slate-50 text-slate-600 border-slate-200' : 'bg-primary/5 text-primary border-blue-200'
                       }`}>
                         {asset.status.replace('_', ' ')}
                       </span>
                     </div>
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <Link href={buildUrl(currentView, asset.id)} className="inline-flex p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-200 rounded-sm transition-colors">
+                    <Link href={buildUrl(currentView, asset.id)} className="inline-flex p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-200 rounded-md transition-colors">
                       <MoreVertical className="w-4 h-4" />
                     </Link>
                   </td>
@@ -348,7 +348,7 @@ export default async function AssetsPage({
               <div className="bg-slate-50/50 p-3.5 rounded-md border border-slate-100">
                  <span className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">Lokasi / Penempatan</span>
                  <div className="flex items-center gap-2">
-                   <div className="p-1.5 bg-white shadow-sm border border-slate-200 rounded-md">
+                   <div className="p-1.5 bg-white shadow-md border border-slate-200 rounded-md">
                      <LayoutGrid className="w-4 h-4 text-blue-500" />
                    </div>
                    <div>
@@ -372,10 +372,10 @@ export default async function AssetsPage({
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-slate-50/50 p-3.5 rounded-md border border-slate-100">
                    <span className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">Ketersediaan</span>
-                   <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-sm ${
+                   <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-md ${
                       detailAsset.status === 'TERSEDIA' ? 'bg-slate-50 text-slate-700 border-slate-200' : 
                       detailAsset.status === 'DIPINJAM' ? 'bg-indigo-50 text-indigo-700 border-indigo-200' :
-                      'bg-blue-50 text-blue-700 border-blue-200'
+                      'bg-primary/5 text-primary border-blue-200'
                     }`}>
                       {detailAsset.status.replace('_', ' ')}
                     </span>
@@ -383,7 +383,7 @@ export default async function AssetsPage({
 
                 <div className="bg-slate-50/50 p-3.5 rounded-md border border-slate-100">
                    <span className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">Kondisi Fisik</span>
-                   <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-sm ${
+                   <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-md ${
                       detailAsset.condition === 'BAIK' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 
                       detailAsset.condition === 'RUSAK_RINGAN' ? 'bg-amber-50 text-amber-700 border-amber-200' :
                       'bg-rose-50 text-rose-700 border-rose-200'
@@ -395,8 +395,8 @@ export default async function AssetsPage({
             </div>
             
             <div className="mt-8 flex gap-3 pt-2 pb-2">
-               <Link href={`/dashboard/assets/${detailAsset.id}/edit`} className="flex-1 bg-blue-600 text-white text-center py-2.5 text-xs font-bold rounded-md hover:bg-blue-700 transition-colors shadow-sm ring-1 ring-blue-700">EDIT</Link>
-               <Link href={`/dashboard/assets/${detailAsset.id}`} className="flex-1 bg-white text-slate-700 border border-slate-300 text-center py-2.5 text-xs font-bold rounded-md hover:bg-slate-50 transition-colors shadow-sm flex items-center justify-center group">LENGKAP <ChevronRight className="w-3.5 h-3.5 ml-1 text-slate-400 group-hover:text-slate-700 transition-colors" /></Link>
+               <Link href={`/dashboard/assets/${detailAsset.id}/edit`} className="flex-1 bg-primary text-white text-center py-2.5 text-xs font-bold rounded-md hover:bg-primary/90 transition-colors shadow-md ring-1 ring-primary">EDIT</Link>
+               <Link href={`/dashboard/assets/${detailAsset.id}`} className="flex-1 bg-white text-slate-700 border border-slate-300 text-center py-2.5 text-xs font-bold rounded-md hover:bg-slate-50 transition-colors shadow-md flex items-center justify-center group">LENGKAP <ChevronRight className="w-3.5 h-3.5 ml-1 text-slate-400 group-hover:text-slate-700 transition-colors" /></Link>
             </div>
           </div>
         </div>

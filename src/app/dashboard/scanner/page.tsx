@@ -46,20 +46,20 @@ export default function ScannerPage() {
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
-            <Camera className="w-6 h-6 text-blue-600" />
+            <Camera className="w-6 h-6 text-primary" />
             Scanner BMN
           </h1>
           <p className="text-sm text-slate-500 mt-1">Arahkan kamera ke QR Code Aset</p>
         </div>
         <Link 
           href="/dashboard"
-          className="p-2 border border-slate-200 bg-white rounded-md hover:bg-slate-50 text-slate-600 transition-colors shadow-sm"
+          className="p-2 border border-slate-200 bg-white rounded-md hover:bg-slate-50 text-slate-600 transition-colors shadow-md"
         >
           <ArrowLeft className="w-5 h-5" />
         </Link>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden mb-6 relative">
+      <div className="bg-white border border-slate-200 rounded-lg shadow-md overflow-hidden mb-6 relative">
         {isScanning ? (
           <div className="w-full bg-slate-900 rounded-lg overflow-hidden relative" style={{ minHeight: '350px' }}>
             <Scanner 
@@ -89,7 +89,7 @@ export default function ScannerPage() {
             </p>
             <button 
               onClick={handleRestartScan}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-md shadow-sm hover:bg-blue-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-white text-sm font-semibold rounded-md shadow-md hover:bg-primary/90 transition-colors"
             >
               <RefreshCcw className="w-4 h-4" /> Scan Ulang
             </button>

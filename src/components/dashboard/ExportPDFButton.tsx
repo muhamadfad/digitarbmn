@@ -82,7 +82,7 @@ export default function ExportPDFButton({ assets }: { assets: Asset[] }) {
     <button 
       onClick={handleExportPDF}
       disabled={isExporting}
-      className="flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 rounded-sm shadow-sm transition-colors text-xs font-bold uppercase tracking-wide disabled:opacity-50"
+      className="flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 rounded-md shadow-md transition-colors text-xs font-bold uppercase tracking-wide disabled:opacity-50"
     >
       {isExporting ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4" />}
       {isExporting ? 'Mengekspor...' : 'Ekspor PDF'}

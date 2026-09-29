@@ -37,20 +37,20 @@ export default async function MasterDataPage({
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 p-4 sm:p-5">
+      <div className="bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 p-4 sm:p-5">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <h1 className="text-lg font-bold text-slate-800">Master Data</h1>
             <p className="text-sm text-slate-500">Kelola data referensi Kategori, Lokasi, dan Ruangan</p>
           </div>
-          <Link href={`/dashboard/master/${tab}/create`} className="flex items-center justify-center rounded-sm bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 shadow-sm transition-colors">
+          <Link href={`/dashboard/master/${tab}/create`} className="flex items-center justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-primary/90 shadow-md transition-colors">
             <Plus className="mr-1.5 h-4 w-4" /> Tambah {tab === 'category' ? 'Kategori' : tab === 'location' ? 'Lokasi' : 'Ruangan'}
           </Link>
         </div>
       </div>
 
       {/* Tabs & Table Container */}
-      <div className="bg-white rounded-sm shadow-sm border border-slate-200 flex flex-col">
+      <div className="bg-white rounded-md shadow-md border border-slate-200 flex flex-col">
         {/* Tabs */}
         <div className="flex overflow-x-auto border-b border-slate-200 bg-slate-50 px-2 sm:px-4">
           <Link 
@@ -102,12 +102,12 @@ export default async function MasterDataPage({
                     </td>
                   )}
                   <td className="px-5 py-3 text-center">
-                    <span className="inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold rounded-sm border bg-slate-50 text-slate-600 border-slate-200">
+                    <span className="inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold rounded-md border bg-slate-50 text-slate-600 border-slate-200">
                       {item._count?.assets || 0} Aset
                     </span>
                   </td>
                   <td className="px-5 py-3 text-right">
-                    <button className="text-blue-600 hover:text-blue-800 text-xs font-semibold mr-3">Edit</button>
+                    <button className="text-primary hover:text-primary/90 text-xs font-semibold mr-3">Edit</button>
                     <button className="text-rose-600 hover:text-rose-800 text-xs font-semibold">Hapus</button>
                   </td>
                 </tr>

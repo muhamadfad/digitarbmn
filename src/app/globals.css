@@ -55,24 +55,24 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.4 0.15 255); /* Biru korporat */
+  --primary: oklch(0.511 0.262 276.966); /* Indigo 600 untuk kesan modern & profesional */
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: oklch(0.96 0.005 247);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.96 0 0);
+  --muted: oklch(0.96 0.005 247);
   --muted-foreground: oklch(0.45 0 0);
-  --accent: oklch(0.96 0 0);
+  --accent: oklch(0.96 0.005 247);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.85 0 0); /* Lebih tegas */
-  --input: oklch(0.85 0 0);
-  --ring: oklch(0.4 0.15 255);
-  --chart-1: oklch(0.87 0 0);
+  --border: oklch(0.88 0 0); /* Lebih soft */
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.511 0.262 276.966);
+  --chart-1: oklch(0.511 0.262 276.966);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.25rem; /* Lebih kotak/korporat */
+  --radius: 0.5rem; /* Lebih membulat agar tidak kaku */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);

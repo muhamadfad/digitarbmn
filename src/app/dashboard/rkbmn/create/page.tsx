@@ -60,17 +60,17 @@ export default async function CreateRkbmnPage() {
         </div>
       </div>
 
-      <div className="bg-card border rounded-sm shadow-sm p-6">
+      <div className="bg-card border rounded-md shadow-md p-6">
         <form className="space-y-6" action={createRkbmn}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-700">Tahun Anggaran</label>
-              <input type="text" value={targetYear} disabled className="w-full rounded-sm border border-input bg-slate-100 px-3 py-2 text-sm shadow-sm opacity-70 cursor-not-allowed" />
+              <input type="text" value={targetYear} disabled className="w-full rounded-md border border-input bg-slate-100 px-3 py-2 text-sm shadow-md opacity-70 cursor-not-allowed" />
             </div>
             
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-700">Jenis Usulan RKBMN</label>
-              <select name="type" required className="w-full rounded-sm border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+              <select name="type" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
                 <option value="PENGHAPUSAN">Usulan Penghapusan (Otomatis dari Kondisi Rusak Berat)</option>
                 <option value="PENGADAAN">Usulan Pengadaan Aset Baru</option>
                 <option value="PEMELIHARAAN">Usulan Anggaran Pemeliharaan</option>
@@ -80,10 +80,10 @@ export default async function CreateRkbmnPage() {
 
           <div className="space-y-2">
             <label className="text-sm font-bold text-slate-700">Keterangan Tambahan / Justifikasi</label>
-            <textarea name="justification" rows={4} required className="w-full rounded-sm border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Tuliskan justifikasi singkat mengenai urgensi usulan ini..." />
+            <textarea name="justification" rows={4} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Tuliskan justifikasi singkat mengenai urgensi usulan ini..." />
           </div>
           
-          <div className="p-4 bg-amber-50 text-amber-800 rounded-sm border border-amber-200 text-sm flex gap-3">
+          <div className="p-4 bg-amber-50 text-amber-800 rounded-md border border-amber-200 text-sm flex gap-3">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
             <div>
               <strong>Perhatian:</strong> Karena Anda memilih "Usulan Penghapusan", sistem otomatis melampirkan <strong>{rusakBeratAssets.length} aset</strong> dengan kondisi "Rusak Berat". Silakan verifikasi daftar di bawah ini sebelum menyimpan.
@@ -91,7 +91,7 @@ export default async function CreateRkbmnPage() {
           </div>
 
           {/* Tabel Daftar Aset yang Akan Dihapuskan */}
-          <div className="border border-gray-300 rounded-sm overflow-hidden">
+          <div className="border border-gray-300 rounded-md overflow-hidden">
             <div className="bg-slate-100 border-b border-gray-300 px-4 py-2 font-bold text-xs uppercase tracking-wider text-slate-800">
               Lampiran Aset (Otomatis)
             </div>
@@ -137,7 +137,7 @@ export default async function CreateRkbmnPage() {
 
           <div className="flex justify-end gap-3 pt-6 border-t">
             <Link href="/dashboard/rkbmn" className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">Batal</Link>
-            <button type="submit" className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-sm text-sm font-medium hover:bg-primary/90 shadow-sm">
+            <button type="submit" className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary/90 shadow-md">
               <Save className="w-4 h-4" /> Simpan & Generate Lampiran
             </button>
           </div>

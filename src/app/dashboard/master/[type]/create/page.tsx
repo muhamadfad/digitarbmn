@@ -55,7 +55,7 @@ export default async function CreateMasterDataPage({
         </div>
       </div>
 
-      <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-6">
+      <div className="bg-white rounded-md shadow-md border border-slate-200 p-6">
         <form action={createMasterData} className="space-y-6">
           <div className="space-y-4">
             <div>
@@ -66,7 +66,7 @@ export default async function CreateMasterDataPage({
                 name="code" 
                 required
                 placeholder={`Contoh: ${type === 'category' ? 'ELK' : type === 'location' ? 'GDG-A' : 'R-101'}`}
-                className="w-full rounded-sm border border-slate-300 bg-slate-50 px-3 py-2 text-sm focus:outline-none focus:border-amber-500 uppercase"
+                className="w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-2 text-sm focus:outline-none focus:border-amber-500 uppercase"
               />
             </div>
 
@@ -78,7 +78,7 @@ export default async function CreateMasterDataPage({
                 name="name" 
                 required
                 placeholder={`Contoh: ${type === 'category' ? 'Elektronik & IT' : type === 'location' ? 'Gedung Utama' : 'Ruang Server'}`}
-                className="w-full rounded-sm border border-slate-300 bg-slate-50 px-3 py-2 text-sm focus:outline-none focus:border-amber-500"
+                className="w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-2 text-sm focus:outline-none focus:border-amber-500"
               />
             </div>
 
@@ -89,7 +89,7 @@ export default async function CreateMasterDataPage({
                   id="locationId" 
                   name="locationId" 
                   required
-                  className="w-full rounded-sm border border-slate-300 bg-slate-50 px-3 py-2 text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full rounded-md border border-slate-300 bg-slate-50 px-3 py-2 text-sm focus:outline-none focus:border-amber-500"
                 >
                   <option value="">-- Pilih Lokasi --</option>
                   {locations.map(loc => (
@@ -101,10 +101,10 @@ export default async function CreateMasterDataPage({
           </div>
 
           <div className="pt-4 border-t border-slate-200 flex justify-end gap-3">
-            <Link href={`/dashboard/master?tab=${type}`} className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-sm transition-colors border border-transparent">
+            <Link href={`/dashboard/master?tab=${type}`} className="px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100 rounded-md transition-colors border border-transparent">
               Batal
             </Link>
-            <button type="submit" className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-sm transition-colors shadow-sm">
+            <button type="submit" className="flex items-center px-4 py-2 text-sm font-semibold text-white bg-primary hover:bg-primary/90 rounded-md transition-colors shadow-md">
               <Save className="w-4 h-4 mr-2" /> Simpan {title}
             </button>
           </div>

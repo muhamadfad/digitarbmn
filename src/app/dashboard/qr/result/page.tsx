@@ -37,7 +37,7 @@ export default async function QRResultPage({
 
   if (!asset) {
     return (
-      <div className="max-w-md mx-auto mt-10 p-8 bg-card border rounded-xl shadow-sm text-center space-y-4">
+      <div className="max-w-md mx-auto mt-10 p-8 bg-card border rounded-xl shadow-md text-center space-y-4">
         <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-red-100 mb-2">
           <AlertCircle className="h-8 w-8 text-red-600" />
         </div>
@@ -64,7 +64,7 @@ export default async function QRResultPage({
         </div>
       </div>
 
-      <div className="bg-card border rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-card border rounded-xl shadow-md overflow-hidden">
         <div className="p-6 border-b bg-slate-50">
           <div className="flex justify-between items-start">
             <div>
@@ -103,7 +103,7 @@ export default async function QRResultPage({
                   : 'border-slate-100 bg-slate-50 opacity-60 cursor-not-allowed pointer-events-none'
               }`}
             >
-              <div className="bg-white p-3 rounded-full shadow-sm mb-3">
+              <div className="bg-white p-3 rounded-full shadow-md mb-3">
                 <Handshake className={`w-6 h-6 ${asset.status === 'TERSEDIA' ? 'text-indigo-600' : 'text-slate-400'}`} />
               </div>
               <span className={`font-bold ${asset.status === 'TERSEDIA' ? 'text-indigo-900' : 'text-slate-500'}`}>Ajukan Peminjaman</span>
@@ -116,7 +116,7 @@ export default async function QRResultPage({
               href={`/dashboard/assessments/create?assetId=${asset.id}`}
               className="flex flex-col items-center justify-center p-6 rounded-xl border-2 border-emerald-100 bg-emerald-50 hover:bg-emerald-100 hover:border-emerald-300 transition-all"
             >
-              <div className="bg-white p-3 rounded-full shadow-sm mb-3">
+              <div className="bg-white p-3 rounded-full shadow-md mb-3">
                 <ClipboardCheck className="w-6 h-6 text-emerald-600" />
               </div>
               <span className="font-bold text-emerald-900">Lapor Cek Fisik (Assessment)</span>

@@ -48,7 +48,7 @@ export default function LoginPage() {
             </div>
           )}
           
-          <div className="-space-y-px rounded-md shadow-sm">
+          <div className="-space-y-px rounded-md shadow-md">
             <div>
               <label htmlFor="username" className="sr-only">Username / Email</label>
               <input
@@ -81,7 +81,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
+              className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-md hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-50"
             >
               {isLoading ? "Memproses..." : "Masuk"}
             </button>

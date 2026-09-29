@@ -31,7 +31,7 @@ export default async function CreateAssessmentPage({
         </div>
       </div>
 
-      <div className="bg-card border rounded-xl shadow-sm p-6">
+      <div className="bg-card border rounded-xl shadow-md p-6">
         <form className="space-y-6" action="/api/assessments/create" method="POST">
           <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
@@ -44,7 +44,7 @@ export default async function CreateAssessmentPage({
                   </div>
                 </>
               ) : (
-                <select name="assetId" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                <select name="assetId" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
                   <option value="">-- Pilih Aset --</option>
                   {assets.map(a => (
                     <option key={a.id} value={a.id}>{a.name} ({a.nup})</option>
@@ -56,7 +56,7 @@ export default async function CreateAssessmentPage({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">Kondisi Saat Ini</label>
-                <select name="condition" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                <select name="condition" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
                   <option value="BAIK">Baik</option>
                   <option value="RUSAK_RINGAN">Rusak Ringan</option>
                   <option value="RUSAK_BERAT">Rusak Berat</option>
@@ -65,7 +65,7 @@ export default async function CreateAssessmentPage({
                 {isAdminOrPengelola && (
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">Estimasi Biaya Perbaikan (Rp)</label>
-                    <input type="number" name="residualValue" placeholder="Misal: 500000" className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+                    <input type="number" name="residualValue" placeholder="Misal: 500000" className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
                     <p className="text-xs text-muted-foreground">Opsional. Kosongkan jika barang dalam kondisi Baik.</p>
                   </div>
                 )}
@@ -73,7 +73,7 @@ export default async function CreateAssessmentPage({
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">Catatan Assessment</label>
-              <textarea name="notes" rows={4} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Detail penilaian fisik, alasan kerusakan, atau rincian penyusutan..." />
+              <textarea name="notes" rows={4} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Detail penilaian fisik, alasan kerusakan, atau rincian penyusutan..." />
             </div>
           </div>
 

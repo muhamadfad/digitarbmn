@@ -28,14 +28,14 @@ export default async function DashboardPage() {
     return (
       <div className="space-y-6">
         {/* Banner Pegawai */}
-        <div className="bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 p-4 sm:p-5">
+        <div className="bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 p-4 sm:p-5">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
               <h1 className="text-lg font-bold text-slate-800">Beranda Pegawai</h1>
               <p className="text-sm text-slate-500">Selamat datang kembali, <strong>{session.user.name}</strong></p>
             </div>
-            <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-sm border border-slate-200 shadow-sm hidden sm:flex">
-              <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+            <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-md border border-slate-200 shadow-md hidden sm:flex">
+              <div className="w-2 h-2 rounded-full bg-primary/50"></div>
               <span className="text-[11px] font-bold tracking-wider text-slate-600 uppercase">PENGGUNA BMN</span>
             </div>
           </div>
@@ -45,16 +45,16 @@ export default async function DashboardPage() {
         <div>
           <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-3">Menu Cepat</h3>
           <div className="grid grid-cols-3 gap-3">
-            <Link href="/dashboard/scanner" className="flex flex-col items-center justify-center p-3 bg-white rounded-sm border border-slate-200 shadow-sm hover:border-blue-400 hover:bg-blue-50 transition-colors text-slate-700 hover:text-blue-700">
-              <Box className="w-6 h-6 mb-2 text-blue-600" />
+            <Link href="/dashboard/scanner" className="flex flex-col items-center justify-center p-3 bg-white rounded-md border border-slate-200 shadow-md hover:border-blue-400 hover:bg-primary/5 transition-colors text-slate-700 hover:text-primary">
+              <Box className="w-6 h-6 mb-2 text-primary" />
               <span className="text-xs font-semibold text-center">Scan QR</span>
             </Link>
-            <Link href="/dashboard/borrowings/create" className="flex flex-col items-center justify-center p-3 bg-white rounded-sm border border-slate-200 shadow-sm hover:border-blue-400 hover:bg-blue-50 transition-colors text-slate-700 hover:text-blue-700">
-              <Handshake className="w-6 h-6 mb-2 text-blue-600" />
+            <Link href="/dashboard/borrowings/create" className="flex flex-col items-center justify-center p-3 bg-white rounded-md border border-slate-200 shadow-md hover:border-blue-400 hover:bg-primary/5 transition-colors text-slate-700 hover:text-primary">
+              <Handshake className="w-6 h-6 mb-2 text-primary" />
               <span className="text-xs font-semibold text-center">Pinjam BMN</span>
             </Link>
-            <Link href="/dashboard/assessments/create" className="flex flex-col items-center justify-center p-3 bg-white rounded-sm border border-slate-200 shadow-sm hover:border-blue-400 hover:bg-blue-50 transition-colors text-slate-700 hover:text-blue-700">
-              <AlertTriangle className="w-6 h-6 mb-2 text-blue-600" />
+            <Link href="/dashboard/assessments/create" className="flex flex-col items-center justify-center p-3 bg-white rounded-md border border-slate-200 shadow-md hover:border-blue-400 hover:bg-primary/5 transition-colors text-slate-700 hover:text-primary">
+              <AlertTriangle className="w-6 h-6 mb-2 text-primary" />
               <span className="text-xs font-semibold text-center">Lapor Rusak</span>
             </Link>
           </div>
@@ -62,7 +62,7 @@ export default async function DashboardPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Card Aset Saya */}
-          <div className="bg-white border border-slate-200 rounded-sm shadow-sm overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-md shadow-md overflow-hidden">
             <div className="p-5 border-b border-slate-100 bg-slate-50 flex items-center gap-3">
               <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg"><Box className="w-5 h-5" /></div>
               <h3 className="font-bold text-slate-800 text-lg">Aset Tanggung Jawab Saya</h3>
@@ -97,7 +97,7 @@ export default async function DashboardPage() {
           </div>
 
           {/* Card Status Peminjaman */}
-          <div className="bg-white border border-slate-200 rounded-sm shadow-sm overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-md shadow-md overflow-hidden">
             <div className="p-5 border-b border-slate-100 bg-slate-50 flex items-center gap-3">
               <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg"><Handshake className="w-5 h-5" /></div>
               <h3 className="font-bold text-slate-800 text-lg">Status Peminjaman Aktif</h3>
@@ -154,13 +154,13 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       {/* Header Halaman */}
-      <div className="bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <div className="bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 p-4 sm:p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-lg font-bold text-slate-800">Dashboard Eksekutif BMN</h1>
           <p className="text-sm text-slate-500">Ringkasan data, nilai aset, dan status operasional Barang Milik Negara.</p>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
-          <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-sm border border-slate-200 shadow-sm w-full sm:w-auto justify-center">
+          <div className="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-md border border-slate-200 shadow-md w-full sm:w-auto justify-center">
             <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
             <span className="text-[11px] font-bold tracking-wider text-slate-600 uppercase">{session.user.role.replace('_', ' ')}</span>
           </div>
@@ -169,22 +169,22 @@ export default async function DashboardPage() {
 
       {/* Aksi Cepat Admin */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-        <Link href="/dashboard/assets/create" className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-sm shadow-sm transition-colors border border-blue-700">
+        <Link href="/dashboard/assets/create" className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white p-3 rounded-md shadow-md transition-colors border border-primary">
           <Box className="w-4 h-4" />
           <span className="text-xs font-bold uppercase tracking-wide">Tambah Aset</span>
         </Link>
-        <Link href="/dashboard/borrowings" className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 p-3 rounded-sm shadow-sm transition-colors border border-slate-200">
+        <Link href="/dashboard/borrowings" className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 p-3 rounded-md shadow-md transition-colors border border-slate-200">
           <Handshake className="w-4 h-4 text-indigo-600" />
           <span className="text-xs font-bold uppercase tracking-wide">Persetujuan</span>
           {pendingBorrowings > 0 && (
-            <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm ml-1">{pendingBorrowings}</span>
+            <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md ml-1">{pendingBorrowings}</span>
           )}
         </Link>
-        <Link href="/dashboard/scanner" className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 p-3 rounded-sm shadow-sm transition-colors border border-slate-200">
+        <Link href="/dashboard/scanner" className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 p-3 rounded-md shadow-md transition-colors border border-slate-200">
           <svg className="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" /></svg>
           <span className="text-xs font-bold uppercase tracking-wide">Scan QR</span>
         </Link>
-        <Link href="/dashboard/analytics" className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 p-3 rounded-sm shadow-sm transition-colors border border-slate-200">
+        <Link href="/dashboard/analytics" className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 p-3 rounded-md shadow-md transition-colors border border-slate-200">
           <FileText className="w-4 h-4 text-emerald-600" />
           <span className="text-xs font-bold uppercase tracking-wide">Laporan</span>
         </Link>
@@ -192,8 +192,8 @@ export default async function DashboardPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-indigo-50 text-indigo-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-indigo-50 text-indigo-600 rounded-md">
             <Box className="w-5 h-5" />
           </div>
           <div>
@@ -202,8 +202,8 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-emerald-50 text-emerald-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-emerald-50 text-emerald-600 rounded-md">
             <span className="font-black text-sm leading-none flex items-center h-5">Rp</span>
           </div>
           <div>
@@ -212,8 +212,8 @@ export default async function DashboardPage() {
           </div>
         </div>
         
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-blue-50 text-blue-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-primary/5 text-primary rounded-md">
             <Handshake className="w-5 h-5" />
           </div>
           <div>
@@ -222,8 +222,8 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-amber-50 text-amber-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-amber-50 text-amber-600 rounded-md">
             <AlertTriangle className="w-5 h-5" />
           </div>
           <div>
@@ -232,8 +232,8 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-rose-50 text-rose-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-rose-50 text-rose-600 rounded-md">
             <Wrench className="w-5 h-5" />
           </div>
           <div>

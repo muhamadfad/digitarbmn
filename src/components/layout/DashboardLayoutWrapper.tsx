@@ -22,7 +22,7 @@ export default function DashboardLayoutWrapper({ children }: { children: React.R
   }, [])
 
   return (
-    <div className="flex h-[100dvh] overflow-hidden bg-white">
+    <div className="flex h-[100dvh] overflow-hidden bg-slate-50">
       {/* Mobile Sidebar Overlay (hanya muncul jika hamburger diklik untuk menu ekstra) */}
       {sidebarOpen && (
         <div 

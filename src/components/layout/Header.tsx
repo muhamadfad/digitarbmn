@@ -106,7 +106,7 @@ export default function Header({
   }
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6 shadow-sm z-10 relative">
+    <header className="flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6 shadow-md z-10 relative">
       <div className="flex items-center flex-1">
         {onMenuClick && (
           <button 
@@ -122,7 +122,7 @@ export default function Header({
         {onDesktopToggle && (
           <button 
             onClick={onDesktopToggle}
-            className="mr-4 text-slate-500 hover:text-slate-900 hidden md:flex items-center justify-center p-1.5 rounded-sm hover:bg-slate-100 transition-colors"
+            className="mr-4 text-slate-500 hover:text-slate-900 hidden md:flex items-center justify-center p-1.5 rounded-md hover:bg-slate-100 transition-colors"
             title="Sembunyikan/Tampilkan Menu (Ctrl+B)"
           >
             {isDesktopCollapsed ? <PanelLeft className="h-5 w-5" /> : <PanelLeftClose className="h-5 w-5" />}
@@ -152,11 +152,11 @@ export default function Header({
                 className="fixed inset-0 z-40 sm:hidden" 
                 onClick={() => setShowDropdown(false)}
               ></div>
-              <div className="fixed top-14 right-4 left-4 sm:left-auto sm:absolute sm:right-0 sm:mt-2 sm:w-96 bg-white border border-slate-200 rounded-sm shadow-lg overflow-hidden z-50 flex flex-col max-h-[80vh]">
+              <div className="fixed top-14 right-4 left-4 sm:left-auto sm:absolute sm:right-0 sm:mt-2 sm:w-96 bg-white border border-slate-200 rounded-md shadow-lg overflow-hidden z-50 flex flex-col max-h-[80vh]">
                 <div className="flex items-center justify-between px-4 py-3 border-b bg-slate-50">
                 <h3 className="font-semibold text-slate-800">Notifikasi</h3>
                 {unreadCount > 0 && (
-                  <button onClick={markAllAsRead} className="text-xs text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                  <button onClick={markAllAsRead} className="text-xs text-primary hover:text-primary/90 font-medium flex items-center gap-1">
                     <CheckCircle className="w-3 h-3" /> Tandai semua dibaca
                   </button>
                 )}
@@ -165,7 +165,7 @@ export default function Header({
                 {notifications.length > 0 ? (
                   <div className="divide-y divide-slate-100">
                     {notifications.map(notif => (
-                      <div key={notif.id} className={`p-4 hover:bg-slate-50 transition-colors ${!notif.isRead ? 'bg-blue-50/50' : ''}`}>
+                      <div key={notif.id} className={`p-4 hover:bg-slate-50 transition-colors ${!notif.isRead ? 'bg-primary/5/50' : ''}`}>
                         <div className="flex justify-between items-start mb-1">
                           <h4 className={`text-sm font-semibold ${!notif.isRead ? 'text-slate-900' : 'text-slate-700'}`}>{notif.title}</h4>
                           <span className="text-[10px] text-slate-400 whitespace-nowrap ml-2">
@@ -177,7 +177,7 @@ export default function Header({
                           <Link 
                             href={notif.link} 
                             onClick={() => markAsRead(notif.id)}
-                            className="inline-block text-xs font-semibold text-blue-600 hover:text-blue-800"
+                            className="inline-block text-xs font-semibold text-primary hover:text-primary/90"
                           >
                             Lihat Detail &rarr;
                           </Link>
@@ -207,7 +207,7 @@ export default function Header({
           </div>
           <button 
             onClick={() => signOut({ callbackUrl: '/login' })}
-            className="ml-2 p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-sm transition-colors"
+            className="ml-2 p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-md transition-colors"
             title="Keluar"
           >
             <LogOut className="h-4 w-4" />

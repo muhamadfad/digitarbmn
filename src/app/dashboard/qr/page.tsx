@@ -18,7 +18,7 @@ export default function QRPage() {
   }
 
   return (
-    <div className="bg-card rounded-xl shadow-sm border p-6 sm:p-10 max-w-2xl mx-auto mt-4 sm:mt-8">
+    <div className="bg-card rounded-xl shadow-md border p-6 sm:p-10 max-w-2xl mx-auto mt-4 sm:mt-8">
       <div className="text-center mb-8">
         <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 mb-4">
           <ScanLine className="h-8 w-8 text-primary" />
@@ -52,7 +52,7 @@ export default function QRPage() {
               <Camera className="w-12 h-12 text-muted-foreground mb-4 opacity-50" />
               <button 
                 onClick={() => setIsScanning(true)}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-md font-medium text-sm transition-colors shadow-sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-md font-medium text-sm transition-colors shadow-md"
               >
                 Aktifkan Kamera
               </button>
@@ -80,13 +80,13 @@ export default function QRPage() {
           <input
             type="text"
             placeholder="Masukkan NUP (Misal: 10001)"
-            className="flex-1 rounded-md border border-input bg-transparent px-4 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+            className="flex-1 rounded-md border border-input bg-transparent px-4 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
             value={nup}
             onChange={(e) => setNup(e.target.value)}
           />
           <button 
             type="submit"
-            className="rounded-md bg-primary px-6 py-2 text-sm font-medium text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
+            className="rounded-md bg-primary px-6 py-2 text-sm font-medium text-primary-foreground shadow-md hover:bg-primary/90 transition-colors"
           >
             Cari
           </button>

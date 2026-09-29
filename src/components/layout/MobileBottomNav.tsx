@@ -41,10 +41,10 @@ export default function MobileBottomNav() {
               key={item.name} 
               href={item.href}
               className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${
-                isActive ? "text-blue-600" : "text-slate-500 hover:text-slate-900"
+                isActive ? "text-primary" : "text-slate-500 hover:text-slate-900"
               }`}
             >
-              <div className={`${isActive ? 'bg-blue-100' : 'bg-transparent'} p-1 rounded-full transition-colors`}>
+              <div className={`${isActive ? 'bg-primary/10' : 'bg-transparent'} p-1 rounded-full transition-colors`}>
                 <item.icon className="h-5 w-5" />
               </div>
               <span className="text-[10px] font-medium">{item.name}</span>

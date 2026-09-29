@@ -65,7 +65,7 @@ export default async function SensusPage({
   return (
     <div className="flex flex-col lg:flex-row gap-4 h-full items-start">
       {/* Kolom Tabel Utama */}
-      <div className={`flex-1 flex flex-col bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 w-full ${detailSensus ? 'hidden lg:flex' : 'flex'}`}>
+      <div className={`flex-1 flex flex-col bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 w-full ${detailSensus ? 'hidden lg:flex' : 'flex'}`}>
         
         {/* Header Halaman */}
         <div className="p-4 sm:p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -79,13 +79,13 @@ export default async function SensusPage({
           
           {isAdmin && (
             <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
-              <button className="flex items-center justify-center rounded-sm bg-[#107c41] border border-[#107c41] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#0c5c30] transition-colors shadow-sm">
+              <button className="flex items-center justify-center rounded-md bg-[#107c41] border border-[#107c41] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#0c5c30] transition-colors shadow-md">
                  Ekspor Excel
               </button>
-              <button className="flex items-center justify-center rounded-sm bg-rose-600 border border-rose-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-rose-700 transition-colors shadow-sm uppercase tracking-wide">
+              <button className="flex items-center justify-center rounded-md bg-rose-600 border border-rose-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-rose-700 transition-colors shadow-md uppercase tracking-wide">
                  Ekspor PDF
               </button>
-              <Link href="/dashboard/sensus/create" className="flex items-center justify-center rounded-sm bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 shadow-sm transition-colors">
+              <Link href="/dashboard/sensus/create" className="flex items-center justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700 shadow-md transition-colors">
                 <Plus className="mr-1.5 h-4 w-4" /> Buka Sensus
               </Link>
             </div>
@@ -97,7 +97,7 @@ export default async function SensusPage({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2">
               
-              <div className="relative border border-slate-300 bg-white rounded-sm hover:bg-slate-50 shadow-sm flex items-center">
+              <div className="relative border border-slate-300 bg-white rounded-md hover:bg-slate-50 shadow-md flex items-center">
                  <List className="w-4 h-4 text-slate-500 absolute left-3 pointer-events-none" />
                  <select 
                    name="status" 
@@ -112,7 +112,7 @@ export default async function SensusPage({
               </div>
               
               {activeFiltersCount > 0 && (
-                <div className="flex items-center px-2 py-1 bg-amber-500 text-white rounded-sm shadow-sm">
+                <div className="flex items-center px-2 py-1 bg-amber-500 text-white rounded-md shadow-md">
                   <span className="text-xs font-bold mr-1.5 bg-amber-600 px-1.5 rounded">{activeFiltersCount}</span>
                   <span className="text-[10px] uppercase tracking-wider font-semibold">Data Tersaring</span>
                 </div>
@@ -177,7 +177,7 @@ export default async function SensusPage({
                         </div>
                       </td>
                       <td className="px-4 py-3 text-center">
-                        <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
+                        <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
                           sensus.status === 'AKTIF' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-slate-50 text-slate-700 border-slate-200'
                         }`}>
                           {sensus.status}
@@ -227,7 +227,7 @@ export default async function SensusPage({
                 </div>
                 <div className="bg-slate-50/50 p-3.5 rounded-md border border-slate-100">
                    <span className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">Status</span>
-                   <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-sm ${
+                   <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-md ${
                       detailSensus.status === 'AKTIF' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 
                       'bg-slate-50 text-slate-700 border-slate-200'
                     }`}>
@@ -238,7 +238,7 @@ export default async function SensusPage({
             </div>
             
             <div className="mt-8 flex gap-3 pt-2 pb-2">
-              <Link href={`/dashboard/sensus/${detailSensus.id}`} className="flex-1 bg-white text-slate-700 border border-slate-300 text-center py-2.5 text-xs font-bold rounded-md hover:bg-slate-50 transition-colors shadow-sm flex items-center justify-center group">
+              <Link href={`/dashboard/sensus/${detailSensus.id}`} className="flex-1 bg-white text-slate-700 border border-slate-300 text-center py-2.5 text-xs font-bold rounded-md hover:bg-slate-50 transition-colors shadow-md flex items-center justify-center group">
                 LANJUTKAN SCAN <ChevronRight className="w-3.5 h-3.5 ml-1 text-slate-400 group-hover:text-slate-700 transition-colors" />
               </Link>
             </div>

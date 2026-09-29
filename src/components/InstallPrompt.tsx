@@ -72,8 +72,8 @@ export default function InstallPrompt() {
       <div className="bg-white border rounded-xl shadow-xl p-5 flex flex-col gap-4 animate-in slide-in-from-bottom-5">
         <div className="flex items-start justify-between">
           <div className="flex gap-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center shrink-0">
-              <Download className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+              <Download className="w-5 h-5 text-primary" />
             </div>
             <div>
               <h3 className="font-semibold text-slate-900">Install Aplikasi</h3>
@@ -93,7 +93,7 @@ export default function InstallPrompt() {
           <Button variant="outline" className="flex-1" onClick={handleDismiss}>
             Nanti Saja
           </Button>
-          <Button className="flex-1 bg-blue-600 hover:bg-blue-700" onClick={handleInstallClick}>
+          <Button className="flex-1 bg-primary hover:bg-primary/90" onClick={handleInstallClick}>
             Install Sekarang
           </Button>
         </div>

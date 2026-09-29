@@ -19,12 +19,12 @@ export default async function CreateComplaintPage() {
         </div>
       </div>
 
-      <div className="bg-card border rounded-xl shadow-sm p-6">
+      <div className="bg-card border rounded-xl shadow-md p-6">
         <form className="space-y-6" action="/api/complaints/create" method="POST">
           <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">Pilih Aset BMN yang Rusak</label>
-              <select name="assetId" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+              <select name="assetId" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
                 <option value="">-- Cari NUP / Nama Aset --</option>
                 {assets.map(a => (
                   <option key={a.id} value={a.id}>{a.name} ({a.nup})</option>
@@ -34,7 +34,7 @@ export default async function CreateComplaintPage() {
             
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">Tingkat Urgensi / Prioritas</label>
-              <select name="priority" required defaultValue="SEDANG" className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+              <select name="priority" required defaultValue="SEDANG" className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
                 <option value="RENDAH">Rendah (Kerusakan minor, aset masih bisa dipakai sebagian)</option>
                 <option value="SEDANG">Sedang (Aset tidak berfungsi normal, menghambat kerja)</option>
                 <option value="TINGGI">Tinggi (Darurat, operasional unit terhenti)</option>
@@ -43,13 +43,13 @@ export default async function CreateComplaintPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">Deskripsi Kerusakan / Kendala</label>
-              <textarea name="description" rows={5} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Ceritakan secara detail bagaimana kerusakan terjadi dan apa gejala/tanda-tandanya..." />
+              <textarea name="description" rows={5} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Ceritakan secara detail bagaimana kerusakan terjadi dan apa gejala/tanda-tandanya..." />
             </div>
           </div>
 
           <div className="flex justify-end gap-3 pt-6 border-t">
             <Link href="/dashboard/complaints" className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">Batal</Link>
-            <button type="submit" className="flex items-center gap-2 px-4 py-2 bg-destructive text-destructive-foreground rounded-md text-sm font-medium hover:bg-destructive/90 shadow-sm">
+            <button type="submit" className="flex items-center gap-2 px-4 py-2 bg-destructive text-destructive-foreground rounded-md text-sm font-medium hover:bg-destructive/90 shadow-md">
               <Send className="w-4 h-4" /> Kirim Pengaduan
             </button>
           </div>

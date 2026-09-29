@@ -50,15 +50,15 @@ export default async function AnalyticsPage() {
   return (
     <div className="space-y-6">
       {/* Header Halaman */}
-      <div className="bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 p-4 sm:p-5">
+      <div className="bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 p-4 sm:p-5">
         <h1 className="text-lg font-bold text-slate-800">Analisis Data BMN</h1>
         <p className="text-sm text-slate-500">Insight dan laporan analitik komprehensif seluruh aset</p>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-blue-50 text-blue-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-primary/5 text-primary rounded-md">
             <DollarSign className="w-5 h-5" />
           </div>
           <div>
@@ -67,8 +67,8 @@ export default async function AnalyticsPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-emerald-50 text-emerald-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-emerald-50 text-emerald-600 rounded-md">
             <TrendingUp className="w-5 h-5" />
           </div>
           <div>
@@ -77,8 +77,8 @@ export default async function AnalyticsPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 p-5 flex items-center gap-4">
-          <div className="p-3 bg-rose-50 text-rose-600 rounded-sm">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 p-5 flex items-center gap-4">
+          <div className="p-3 bg-rose-50 text-rose-600 rounded-md">
             <TrendingDown className="w-5 h-5" />
           </div>
           <div>
@@ -90,7 +90,7 @@ export default async function AnalyticsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Distribusi Kategori */}
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 flex flex-col">
           <div className="p-4 border-b border-slate-200 flex items-center gap-2 bg-slate-50">
             <PieChart className="w-4 h-4 text-slate-500" />
             <h3 className="font-bold text-slate-700 uppercase text-xs">Distribusi per Kategori</h3>
@@ -103,8 +103,8 @@ export default async function AnalyticsPage() {
                     <span className="font-semibold text-slate-700">{cat.name} ({cat._count.assets})</span>
                     <span className="text-slate-500 font-mono">{totalAssets > 0 ? Math.round((cat._count.assets / totalAssets) * 100) : 0}%</span>
                   </div>
-                  <div className="w-full bg-slate-100 rounded-sm h-1.5">
-                    <div className="bg-amber-500 h-1.5 rounded-sm" style={{ width: `${totalAssets > 0 ? (cat._count.assets / totalAssets) * 100 : 0}%` }}></div>
+                  <div className="w-full bg-slate-100 rounded-md h-1.5">
+                    <div className="bg-amber-500 h-1.5 rounded-md" style={{ width: `${totalAssets > 0 ? (cat._count.assets / totalAssets) * 100 : 0}%` }}></div>
                   </div>
                 </div>
               ))}
@@ -114,7 +114,7 @@ export default async function AnalyticsPage() {
         </div>
 
         {/* Aktivitas Maintenance Terbaru */}
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 flex flex-col">
           <div className="p-4 border-b border-slate-200 flex items-center gap-2 bg-slate-50">
             <Activity className="w-4 h-4 text-slate-500" />
             <h3 className="font-bold text-slate-700 uppercase text-xs">Log Maintenance Terakhir</h3>
@@ -136,16 +136,16 @@ export default async function AnalyticsPage() {
                       <div className="text-[11px] text-slate-500 font-mono">{new Date(m.date).toLocaleDateString('id-ID')}</div>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
+                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
                         m.type === 'PREVENTIF' ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : 'bg-orange-50 text-orange-700 border-orange-200'
                       }`}>
                         {m.type}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
+                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
                         m.status === 'SELESAI' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 
-                        m.status === 'PROSES' ? 'bg-blue-50 text-blue-700 border-blue-200' : 
+                        m.status === 'PROSES' ? 'bg-primary/5 text-primary border-blue-200' : 
                         'bg-slate-50 text-slate-600 border-slate-200'
                       }`}>
                         {m.status.replace('_', ' ')}
@@ -166,7 +166,7 @@ export default async function AnalyticsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Butuh Maintenance */}
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 flex flex-col">
           <div className="p-4 border-b border-slate-200 bg-slate-50">
             <h3 className="font-bold text-slate-700 uppercase text-xs tracking-wider">Perlu Maintenance (Rusak Ringan)</h3>
           </div>
@@ -181,7 +181,7 @@ export default async function AnalyticsPage() {
                       <div className="text-[11px] font-semibold text-slate-600 mt-1">Rp {(asset.acquisitionValue || 0).toLocaleString('id-ID')}</div>
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border bg-amber-50 text-amber-700 border-amber-200">
+                      <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border bg-amber-50 text-amber-700 border-amber-200">
                         {asset.condition.replace('_', ' ')}
                       </span>
                     </td>
@@ -198,7 +198,7 @@ export default async function AnalyticsPage() {
         </div>
 
         {/* Butuh Lelang / Penghapusan */}
-        <div className="bg-white rounded-sm shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-white rounded-md shadow-md border border-slate-200 flex flex-col">
           <div className="p-4 border-b border-slate-200 bg-slate-50">
             <h3 className="font-bold text-slate-700 uppercase text-xs tracking-wider">Rekomendasi Lelang/Hapus (Rusak Berat)</h3>
           </div>
@@ -213,7 +213,7 @@ export default async function AnalyticsPage() {
                       <div className="text-[11px] font-semibold text-slate-600 mt-1">Rp {(asset.acquisitionValue || 0).toLocaleString('id-ID')}</div>
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border bg-rose-50 text-rose-700 border-rose-200">
+                      <span className="inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border bg-rose-50 text-rose-700 border-rose-200">
                         {asset.condition.replace('_', ' ')}
                       </span>
                     </td>

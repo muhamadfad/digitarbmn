@@ -57,15 +57,15 @@ export default function Sidebar({
   ]
 
   return (
-    <div className={`flex h-full flex-col bg-white text-slate-700 shadow-sm border-r border-slate-200 z-10 relative transition-all duration-300 w-full`}>
+    <div className={`flex h-full flex-col bg-white text-slate-700 shadow-md border-r border-slate-200 z-10 relative transition-all duration-300 w-full`}>
       <div className="flex h-14 items-center border-b border-slate-200 bg-slate-50 justify-center">
         {isCollapsed ? (
-          <div className="bg-blue-600 p-1.5 rounded-md shadow-sm">
+          <div className="bg-primary p-1.5 rounded-md shadow-md">
             <Database className="w-5 h-5 text-white" />
           </div>
         ) : (
           <h1 className="font-black tracking-tight text-slate-800 flex items-center gap-2 text-lg w-full px-4">
-            <div className="bg-blue-600 p-1.5 rounded-md shadow-sm shrink-0">
+            <div className="bg-primary p-1.5 rounded-md shadow-md shrink-0">
               <Database className="w-4 h-4 text-white" />
             </div>
             <span>Di-GitaR BMN</span>
@@ -88,13 +88,13 @@ export default function Sidebar({
                 href={item.href}
                 onClick={onMobileItemClick}
                 title={isCollapsed ? item.name : undefined}
-                className={`group flex items-center rounded-md py-2 text-sm font-medium transition-all ${isCollapsed ? 'justify-center px-0' : 'px-3'} ${
+                className={`group flex items-center rounded-lg py-2.5 text-sm font-medium transition-all ${isCollapsed ? 'justify-center px-0' : 'px-3'} ${
                   isActive 
-                    ? "bg-amber-400 text-slate-900 shadow-sm font-bold" 
+                    ? "bg-slate-900 text-white shadow-md font-semibold" 
                     : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                 }`}
               >
-                <item.icon className={`h-4 w-4 flex-shrink-0 ${!isCollapsed ? 'mr-3' : ''} ${isActive ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}`} aria-hidden="true" />
+                <item.icon className={`h-4 w-4 flex-shrink-0 ${!isCollapsed ? 'mr-3' : ''} ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600'}`} aria-hidden="true" />
                 {!isCollapsed && <span>{item.name}</span>}
               </Link>
             )
@@ -113,13 +113,13 @@ export default function Sidebar({
                     href={item.href}
                     onClick={onMobileItemClick}
                     title={isCollapsed ? item.name : undefined}
-                    className={`group flex items-center rounded-md py-2 text-sm font-medium transition-all ${isCollapsed ? 'justify-center px-0' : 'px-3'} ${
+                    className={`group flex items-center rounded-lg py-2.5 text-sm font-medium transition-all ${isCollapsed ? 'justify-center px-0' : 'px-3'} ${
                       isActive 
-                        ? "bg-amber-400 text-slate-900 shadow-sm font-bold" 
+                        ? "bg-slate-900 text-white shadow-md font-semibold" 
                         : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                     }`}
                   >
-                    <item.icon className={`h-4 w-4 flex-shrink-0 ${!isCollapsed ? 'mr-3' : ''} ${isActive ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}`} aria-hidden="true" />
+                    <item.icon className={`h-4 w-4 flex-shrink-0 ${!isCollapsed ? 'mr-3' : ''} ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600'}`} aria-hidden="true" />
                     {!isCollapsed && <span>{item.name}</span>}
                   </Link>
                 )

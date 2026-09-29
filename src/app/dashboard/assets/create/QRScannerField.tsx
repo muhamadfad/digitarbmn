@@ -28,13 +28,13 @@ export default function QRScannerField() {
             name="qrCode" 
             value={qrValue}
             onChange={(e) => setQrValue(e.target.value)}
-            className="flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" 
+            className="flex-1 rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" 
             placeholder="Scan atau ketik kode QR..." 
           />
           <button 
             type="button"
             onClick={() => setIsScanning(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-md text-sm font-medium hover:bg-slate-800 transition-colors shadow-sm whitespace-nowrap"
+            className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-md text-sm font-medium hover:bg-slate-800 transition-colors shadow-md whitespace-nowrap"
           >
             <QrCode className="w-4 h-4" /> Scan QR
           </button>

@@ -27,7 +27,7 @@ export default async function CreateBorrowingPage({
         </div>
       </div>
 
-      <div className="bg-card border rounded-xl shadow-sm p-6">
+      <div className="bg-card border rounded-xl shadow-md p-6">
         <form className="space-y-6" action="/api/borrowings/create" method="POST">
           <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
@@ -41,7 +41,7 @@ export default async function CreateBorrowingPage({
                 </>
               ) : (
                 <>
-                  <select name="assetId" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                  <select name="assetId" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
                     <option value="">-- Pilih Aset yang Tersedia --</option>
                     {assets.map(a => (
                       <option key={a.id} value={a.id}>{a.name} ({a.nup}) - {a.category?.name}</option>
@@ -55,17 +55,17 @@ export default async function CreateBorrowingPage({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">Tanggal Peminjaman</label>
-                <input type="date" name="borrowDate" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+                <input type="date" name="borrowDate" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">Rencana Tanggal Pengembalian</label>
-                <input type="date" name="returnDate" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+                <input type="date" name="returnDate" required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
               </div>
             </div>
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">Tujuan / Keperluan Peminjaman</label>
-              <textarea name="purpose" rows={4} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Jelaskan secara singkat keperluan penggunaan aset ini..." />
+              <textarea name="purpose" rows={4} required className="w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring placeholder:text-muted-foreground" placeholder="Jelaskan secara singkat keperluan penggunaan aset ini..." />
             </div>
           </div>
 

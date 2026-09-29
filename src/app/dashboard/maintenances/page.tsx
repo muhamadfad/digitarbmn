@@ -63,7 +63,7 @@ export default async function MaintenancesPage({
   return (
     <div className="flex flex-col lg:flex-row gap-4 h-full items-start">
       {/* Kolom Tabel Utama */}
-      <div className={`flex-1 flex flex-col bg-white rounded-none sm:rounded-sm shadow-sm border border-slate-200 w-full ${detailMaintenance ? 'hidden lg:flex' : 'flex'}`}>
+      <div className={`flex-1 flex flex-col bg-white rounded-none sm:rounded-md shadow-md border border-slate-200 w-full ${detailMaintenance ? 'hidden lg:flex' : 'flex'}`}>
         
         {/* Header Halaman */}
         <div className="p-4 sm:p-5 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -72,13 +72,13 @@ export default async function MaintenancesPage({
             <p className="text-sm text-slate-500">Pemeliharaan kuratif (perbaikan) dan preventif (rutin)</p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
-            <button className="flex items-center justify-center rounded-sm bg-[#107c41] border border-[#107c41] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#0c5c30] transition-colors shadow-sm">
+            <button className="flex items-center justify-center rounded-md bg-[#107c41] border border-[#107c41] px-3 py-1.5 text-sm font-medium text-white hover:bg-[#0c5c30] transition-colors shadow-md">
                Ekspor Excel
             </button>
-            <button className="flex items-center justify-center rounded-sm bg-rose-600 border border-rose-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-rose-700 transition-colors shadow-sm uppercase tracking-wide">
+            <button className="flex items-center justify-center rounded-md bg-rose-600 border border-rose-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-rose-700 transition-colors shadow-md uppercase tracking-wide">
                Ekspor PDF
             </button>
-            <Link href="/dashboard/maintenances/create" className="flex items-center justify-center rounded-sm bg-blue-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-blue-700 shadow-sm transition-colors w-full sm:w-auto">
+            <Link href="/dashboard/maintenances/create" className="flex items-center justify-center rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-white hover:bg-primary/90 shadow-md transition-colors w-full sm:w-auto">
               <Plus className="mr-1.5 h-4 w-4" /> Tambah Data
             </Link>
           </div>
@@ -89,7 +89,7 @@ export default async function MaintenancesPage({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2">
               
-              <div className="relative border border-slate-300 bg-white rounded-sm hover:bg-slate-50 shadow-sm flex items-center">
+              <div className="relative border border-slate-300 bg-white rounded-md hover:bg-slate-50 shadow-md flex items-center">
                  <List className="w-4 h-4 text-slate-500 absolute left-3 pointer-events-none" />
                  <select 
                    name="status" 
@@ -106,7 +106,7 @@ export default async function MaintenancesPage({
               </div>
               
               {activeFiltersCount > 0 && (
-                <div className="flex items-center px-2 py-1 bg-amber-500 text-white rounded-sm shadow-sm">
+                <div className="flex items-center px-2 py-1 bg-amber-500 text-white rounded-md shadow-md">
                   <span className="text-xs font-bold mr-1.5 bg-amber-600 px-1.5 rounded">{activeFiltersCount}</span>
                   <span className="text-[10px] uppercase tracking-wider font-semibold">Data Tersaring</span>
                 </div>
@@ -125,7 +125,7 @@ export default async function MaintenancesPage({
                 placeholder="Cari NUP, teknisi..." 
                 className="w-full rounded-l-sm border border-slate-300 bg-white pl-10 pr-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               />
-              <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-r-sm border border-blue-600 transition-colors flex items-center">
+              <button type="submit" className="bg-primary hover:bg-primary/90 text-white px-4 py-2 text-sm font-medium rounded-r-sm border border-primary transition-colors flex items-center">
                  <Search className="w-4 h-4 mr-2" /> Cari
               </button>
             </div>
@@ -153,7 +153,7 @@ export default async function MaintenancesPage({
                 </tr>
               ) : (
                 maintenances.map((m) => (
-                  <tr key={m.id} className={`hover:bg-slate-50/80 transition-colors ${detailId === m.id ? 'bg-blue-50/50' : ''}`}>
+                  <tr key={m.id} className={`hover:bg-slate-50/80 transition-colors ${detailId === m.id ? 'bg-primary/5/50' : ''}`}>
                     <td className="px-4 py-3">
                       <div className="font-semibold text-slate-800 uppercase text-xs">{m.asset.name}</div>
                       <div className="text-[11px] text-slate-500 mt-0.5 font-mono">{m.asset.nup}</div>
@@ -175,9 +175,9 @@ export default async function MaintenancesPage({
                       {m.cost ? `Rp ${m.cost.toLocaleString('id-ID')}` : '-'}
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-sm border ${
+                      <span className={`inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-md border ${
                         m.status === 'DIJADWALKAN' ? 'bg-slate-50 text-slate-700 border-slate-200' :
-                        m.status === 'DALAM_PROSES' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                        m.status === 'DALAM_PROSES' ? 'bg-primary/5 text-primary border-blue-200' :
                         m.status === 'SELESAI' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                         'bg-rose-50 text-rose-700 border-rose-200'
                       }`}>
@@ -185,7 +185,7 @@ export default async function MaintenancesPage({
                       </span>
                     </td>
                     <td className="px-4 py-3 text-right">
-                      <Link href={buildUrl(m.id)} className="text-blue-600 hover:text-blue-800 text-xs font-semibold">
+                      <Link href={buildUrl(m.id)} className="text-primary hover:text-primary/90 text-xs font-semibold">
                         Detail
                       </Link>
                     </td>
@@ -233,9 +233,9 @@ export default async function MaintenancesPage({
 
               <div className="bg-slate-50/50 p-3.5 rounded-md border border-slate-100">
                  <span className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">Status</span>
-                 <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-sm ${
+                 <span className={`inline-flex items-center justify-center px-2.5 py-1 text-[11px] font-bold uppercase rounded-md border shadow-md ${
                     detailMaintenance.status === 'DIJADWALKAN' ? 'bg-slate-50 text-slate-700 border-slate-200' :
-                    detailMaintenance.status === 'DALAM_PROSES' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                    detailMaintenance.status === 'DALAM_PROSES' ? 'bg-primary/5 text-primary border-blue-200' :
                     detailMaintenance.status === 'SELESAI' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                     'bg-rose-50 text-rose-700 border-rose-200'
                   }`}>
@@ -245,7 +245,7 @@ export default async function MaintenancesPage({
             </div>
             
             <div className="mt-8 flex gap-3 pt-2 pb-2">
-              <Link href={`/dashboard/assets/${detailMaintenance.assetId}`} className="flex-1 bg-white text-slate-700 border border-slate-300 text-center py-2.5 text-xs font-bold rounded-md hover:bg-slate-50 transition-colors shadow-sm flex items-center justify-center group">
+              <Link href={`/dashboard/assets/${detailMaintenance.assetId}`} className="flex-1 bg-white text-slate-700 border border-slate-300 text-center py-2.5 text-xs font-bold rounded-md hover:bg-slate-50 transition-colors shadow-md flex items-center justify-center group">
                 LIHAT PROFIL ASET <ChevronRight className="w-3.5 h-3.5 ml-1 text-slate-400 group-hover:text-slate-700 transition-colors" />
               </Link>
             </div>

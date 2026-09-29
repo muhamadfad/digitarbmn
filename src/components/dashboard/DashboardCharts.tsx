@@ -43,8 +43,8 @@ export default function DashboardCharts() {
   if (loading) {
     return (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6 animate-pulse">
-        <div className="bg-slate-100 h-[350px] rounded-sm border border-slate-200"></div>
-        <div className="bg-slate-100 h-[350px] rounded-sm border border-slate-200"></div>
+        <div className="bg-slate-100 h-[350px] rounded-md border border-slate-200"></div>
+        <div className="bg-slate-100 h-[350px] rounded-md border border-slate-200"></div>
       </div>
     )
   }
@@ -54,7 +54,7 @@ export default function DashboardCharts() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
       {/* Chart 1: Kondisi Aset */}
-      <div className="bg-white border border-slate-200 rounded-sm shadow-sm p-5">
+      <div className="bg-white border border-slate-200 rounded-md shadow-md p-5">
         <div className="flex items-center gap-2 mb-6">
           <AlertTriangle className="w-5 h-5 text-amber-500" />
           <h3 className="text-sm font-bold text-slate-800 tracking-tight">KONDISI BMN (PROSENTASE)</h3>
@@ -90,7 +90,7 @@ export default function DashboardCharts() {
       </div>
 
       {/* Chart 2: Distribusi Kategori */}
-      <div className="bg-white border border-slate-200 rounded-sm shadow-sm p-5">
+      <div className="bg-white border border-slate-200 rounded-md shadow-md p-5">
         <div className="flex items-center gap-2 mb-6">
           <Box className="w-5 h-5 text-blue-500" />
           <h3 className="text-sm font-bold text-slate-800 tracking-tight">DISTRIBUSI BMN PER KATEGORI</h3>
