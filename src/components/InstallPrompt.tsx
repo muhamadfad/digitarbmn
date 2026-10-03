@@ -25,17 +25,31 @@ export default function InstallPrompt() {
     // Cek saat pertama kali load
     checkPrompt();
 
-    // Dengarkan event kustom pwa-ready jika event beforeinstallprompt fired setelah komponen dimount
+    // Dengarkan event kustom pwa-ready
     window.addEventListener("pwa-ready", checkPrompt);
 
     // Deteksi jika aplikasi sudah diinstal
-    window.addEventListener("appinstalled", () => {
+    const onAppInstalled = () => {
       setShowPrompt(false);
       setDeferredPrompt(null);
-    });
+    };
+    window.addEventListener("appinstalled", onAppInstalled);
+
+    // Event listener untuk trigger manual dari tombol lain
+    const manualTrigger = () => {
+      if ((window as any).deferredPWAInstallPrompt) {
+        setDeferredPrompt((window as any).deferredPWAInstallPrompt);
+        setShowPrompt(true);
+      } else {
+        alert("Aplikasi sudah terinstal atau perangkat/browser Anda tidak mendukung instalasi langsung.");
+      }
+    };
+    window.addEventListener("trigger-pwa-install", manualTrigger);
 
     return () => {
       window.removeEventListener("pwa-ready", checkPrompt);
+      window.removeEventListener("appinstalled", onAppInstalled);
+      window.removeEventListener("trigger-pwa-install", manualTrigger);
     };
   }, []);
 

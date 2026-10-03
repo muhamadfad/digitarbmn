@@ -17,7 +17,8 @@ import {
   Database,
   Users,
   Settings,
-  Menu
+  Menu,
+  Download
 } from "lucide-react"
 
 export default function Sidebar({ 
@@ -128,8 +129,20 @@ export default function Sidebar({
           )}
         </nav>
         
+        {/* Tombol Install PWA */}
+        <div className="px-4 py-3 mt-auto">
+          <button 
+            onClick={() => window.dispatchEvent(new Event('trigger-pwa-install'))}
+            className={`w-full flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-md font-semibold hover:bg-primary/90 transition-colors shadow-md ${isCollapsed ? 'px-2' : 'px-4'}`}
+            title="Install Aplikasi"
+          >
+            <Download className="w-4 h-4 shrink-0" />
+            {!isCollapsed && <span>Install Aplikasi</span>}
+          </button>
+        </div>
+
         {/* Shortcut Hint di bawah */}
-        <div className={`px-4 py-3 mt-auto text-xs text-slate-400 font-mono flex items-center border-t border-slate-100 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
+        <div className={`px-4 py-3 text-xs text-slate-400 font-mono flex items-center border-t border-slate-100 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
           {!isCollapsed && <span>Sembunyikan</span>}
           <span className="font-bold bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">Ctrl+B</span>
         </div>
